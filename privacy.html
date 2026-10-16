@@ -1,190 +1,427 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>سياسة الخصوصية — WorkMimo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — WorkMimo</title>
+<meta name="description" content="Privacy Policy for WorkMimo application">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-  body { font-family: system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; max-width: 720px; margin: 2rem auto; padding: 1.5rem; line-height: 1.7; color: #222; }
-  h1 { color: #144DBA; }
-  h2 { color: #144DBA; margin-top: 2rem; }
-  a { color: #144DBA; }
-  hr { border: 0; border-top: 1px solid #eee; margin: 2rem 0; }
-  .lang-switch { text-align: center; margin-bottom: 2rem; }
-  .lang-switch a { margin: 0 1rem; text-decoration: none; font-weight: bold; }
+  :root {
+    --primary: #144DBA;
+    --primary-hover: #0f3a8e;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --code-bg: #f1f5f9;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.7;
+    padding: 2rem 1rem;
+    transition: all 0.3s ease;
+  }
+
+  /* RTL Specific Overrides */
+  body.rtl {
+    font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+    direction: rtl;
+    text-align: right;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 2.5rem;
+    border: 1px solid var(--border-color);
+  }
+
+  /* Header & Lang Switch */
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    gap: 1.5rem;
+  }
+
+  .app-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: -0.025em;
+  }
+
+  .lang-switch {
+    display: inline-flex;
+    background-color: var(--code-bg);
+    padding: 4px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+  }
+
+  .lang-btn {
+    padding: 8px 20px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+  }
+
+  .lang-btn:hover { color: var(--primary); }
+  
+  .lang-btn.active {
+    background-color: var(--card-bg);
+    color: var(--primary);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  /* Typography */
+  h1 {
+    font-size: 1.8rem;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    color: var(--primary);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--bg-color);
+  }
+
+  p { margin-bottom: 1rem; color: var(--text-main); }
+  
+  strong { color: #0f172a; font-weight: 600; }
+
+  /* Lists */
+  ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    color: var(--text-main);
+  }
+  
+  body.rtl ul {
+    padding-left: 0;
+    padding-right: 1.5rem;
+  }
+
+  li { margin-bottom: 0.5rem; }
+
+  /* Code snippets */
+  code {
+    background-color: var(--code-bg);
+    color: #d946ef; /* A nice contrast color for code */
+    padding: 0.2rem 0.4rem;
+    border-radius: 6px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 0.9em;
+    border: 1px solid var(--border-color);
+  }
+
+  /* Links */
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  a:hover {
+    border-bottom-color: var(--primary);
+  }
+
+  /* Meta info box */
+  .meta-info {
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+  }
+
+  .meta-info p { margin-bottom: 0.5rem; font-size: 0.95rem; }
+  .meta-info p:last-child { margin-bottom: 0; }
+
+  hr {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 2.5rem 0;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .container { padding: 1.5rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.15rem; }
+  }
+
+  /* Print styles */
+  @media print {
+    body { background: white; padding: 0; }
+    .container { box-shadow: none; border: none; max-width: 100%; }
+    .lang-switch { display: none; }
+    a { text-decoration: underline; color: black; }
+  }
 </style>
 </head>
 <body>
 
-<div class="lang-switch">
-  <a href="#ar">العربية</a> | <a href="#en">English</a>
+<div class="container">
+  <div class="header">
+    <div class="app-title">WorkMimo</div>
+    <div class="lang-switch">
+      <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">English</button>
+      <button class="lang-btn" id="btn-ar" onclick="setLanguage('ar')">العربية</button>
+    </div>
+  </div>
+
+  <!-- ENGLISH SECTION (Default) -->
+  <section id="en">
+    <h1>Privacy Policy — WorkMimo</h1>
+    
+    <div class="meta-info">
+      <p><strong>Last updated:</strong> 2026-10-16</p>
+      <p><strong>App name:</strong> WorkMimo (Professional Memo)</p>
+      <p><strong>Package name:</strong> com.achraf.dailymimo</p>
+      <p><strong>Version:</strong> 1.0</p>
+    </div>
+
+    <h2>1. Overview</h2>
+    <p>WorkMimo is a personal work journal for artisans and freelancers. The app itself does not collect personal data, does not require an account, and does not transmit your records to any server operated by the developer. Ads shown in the app are served by Google AdMob, which may collect limited data as described below.</p>
+
+    <h2>2. Data the app itself collects</h2>
+    <p><strong>None.</strong> The app has no accounts, no analytics, no crash reporting, and does not collect the Advertising ID on its own. All records you create are stored on your device only.</p>
+
+    <h2>3. Data stored on your device</h2>
+    <p>The app stores the following data locally on your device:</p>
+    <ul>
+      <li><code>work_memo_pro_v1</code> — your work records (dates, hours, payments, notes, locations).</li>
+      <li><code>memo_currency</code> — your selected currency.</li>
+      <li><code>memo_theme</code> — dark or light mode.</li>
+      <li><code>memo_high_contrast</code> — high contrast mode.</li>
+      <li><code>memo_lang</code> — interface language.</li>
+      <li><code>memo_accent</code> — selected accent color.</li>
+    </ul>
+    <p>This data never leaves your device unless you actively export it.</p>
+
+    <h2>4. Data the app shares with third parties</h2>
+    <p>The only third party is <strong>Google AdMob</strong> via the Google Mobile Ads SDK.</p>
+    <p>AdMob may collect:</p>
+    <ul>
+      <li>Advertising ID</li>
+      <li>IP address</li>
+      <li>Approximate location inferred from IP</li>
+      <li>Device model and OS version</li>
+      <li>Ad interaction events</li>
+    </ul>
+    <p><strong>Purpose:</strong> to serve and measure ads.</p>
+    <p>This data is governed by Google's privacy policy:</p>
+    <ul>
+      <li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google Ads Technologies</a></li>
+      <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+    </ul>
+    <p>No other SDK or analytics service is used.</p>
+
+    <h2>5. Consent and your choices</h2>
+    <p>On first launch, the app shows Google's consent form (UMP) to users in the EEA, UK, and Switzerland.</p>
+    <p>You can decline personalized ads, and the app continues to work.</p>
+    <p>You can reset your Advertising ID at any time from: Android Settings → Google → Ads.</p>
+    <p>The developer does not store consent choices on any server; the choice is stored on your device by Google's SDK.</p>
+
+    <h2>6. Data retention and deletion</h2>
+    <p>Records stay on your device until you delete them within the app or uninstall the app.</p>
+    <p>You can export a JSON backup at any time and restore it later.</p>
+    <p>Uninstalling the app removes all app data from the device; exported PDF and JSON files remain wherever you saved them.</p>
+    <p>There is no server-side data to request deletion of.</p>
+
+    <h2>7. Children's privacy</h2>
+    <p>The app is not directed to children under 16.</p>
+    <p>The app does not knowingly collect any data from children.</p>
+    <p>If a parent or guardian believes a child has used the app, they can simply uninstall it; no server-side data exists.</p>
+
+    <h2>8. Security</h2>
+    <p>Records are stored locally on the device; no network transmission of records occurs.</p>
+    <p>The developer cannot access user records.</p>
+    <p>No method of local storage is 100% secure; users should keep their device protected and use a screen lock.</p>
+
+    <h2>9. International users</h2>
+    <p>The developer is based in Morocco. The app itself does not transfer data across borders; AdMob may transfer data per Google's own policy.</p>
+
+    <h2>10. Changes to this policy</h2>
+    <p>The policy may be updated; the "Last updated" date will reflect changes.</p>
+    <p>Continued use after changes constitutes acceptance.</p>
+
+    <h2>11. Contact</h2>
+    <p><strong>Email:</strong> <a href="mailto:achraf_ayaou@outlook.com">achraf_ayaou@outlook.com</a></p>
+    <p><strong>Developer:</strong> achraf</p>
+    <p><strong>Location:</strong> Morocco</p>
+    <p>For any privacy questions, you can reach out via the email above.</p>
+  </section>
+
+  <!-- ARABIC SECTION (Hidden by default) -->
+  <section id="ar" style="display: none;">
+    <h1>سياسة الخصوصية — WorkMimo</h1>
+    
+    <div class="meta-info">
+      <p><strong>آخر تحديث:</strong> 2026-10-16</p>
+      <p><strong>اسم التطبيق:</strong> WorkMimo (المذكرة المهنية)</p>
+      <p><strong>اسم الحزمة:</strong> com.achraf.dailymimo</p>
+      <p><strong>الإصدار:</strong> 1.0</p>
+    </div>
+
+    <h2>1. نظرة عامة</h2>
+    <p>WorkMimo هو تطبيق مذكرة مهنية شخصية للحرفيين والمهنيين المستقلين. التطبيق نفسه لا يجمع بيانات شخصية، ولا يتطلب إنشاء حساب، ولا يرسل سجلاتك إلى أي خادم يديره المطوّر. الإعلانات التي تظهر داخل التطبيق تُقدَّم من Google AdMob، وقد تجمع بيانات محدودة كما هو موضح أدناه.</p>
+
+    <h2>2. البيانات التي يجمعها التطبيق نفسه</h2>
+    <p><strong>لا شيء.</strong> التطبيق لا يحتوي على حسابات، ولا تحليلات، ولا تقارير أعطال، ولا يجمع معرّف الإعلان من تلقاء نفسه. جميع السجلات التي تنشئها تُخزَّن على جهازك فقط.</p>
+
+    <h2>3. البيانات المخزَّنة على جهازك</h2>
+    <p>يخزّن التطبيق البيانات التالية محليًّا على جهازك:</p>
+    <ul>
+      <li><code>work_memo_pro_v1</code> — سجلات العمل (التواريخ، الساعات، المدفوعات، الملاحظات، المواقع).</li>
+      <li><code>memo_currency</code> — العملة المختارة.</li>
+      <li><code>memo_theme</code> — الوضع الداكن أو الفاتح.</li>
+      <li><code>memo_high_contrast</code> — الوضع عالي التباين.</li>
+      <li><code>memo_lang</code> — لغة الواجهة.</li>
+      <li><code>memo_accent</code> — لون الإبراز المختار.</li>
+    </ul>
+    <p>هذه البيانات لا تغادر جهازك إلا إذا صدّرتها بنفسك.</p>
+
+    <h2>4. البيانات التي يشاركها التطبيق مع أطراف ثالثة</h2>
+    <p>الطرف الثالث الوحيد هو <strong>Google AdMob</strong> عبر Google Mobile Ads SDK.</p>
+    <p>قد يجمع AdMob:</p>
+    <ul>
+      <li>معرّف الإعلان (Advertising ID)</li>
+      <li>عنوان IP</li>
+      <li>الموقع التقريبي المستنتج من IP</li>
+      <li>طراز الجهاز وإصدار نظام التشغيل</li>
+      <li>أحداث التفاعل مع الإعلانات</li>
+    </ul>
+    <p><strong>الغرض:</strong> عرض الإعلانات وقياس أدائها.</p>
+    <p>تخضع هذه البيانات لسياسة خصوصية Google:</p>
+    <ul>
+      <li><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">تقنيات إعلانات Google</a></li>
+      <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">سياسة خصوصية Google</a></li>
+    </ul>
+    <p>لا يُستخدم أي SDK آخر أو خدمة تحليلات.</p>
+
+    <h2>5. الموافقة وخياراتك</h2>
+    <p>عند أول تشغيل، يعرض التطبيق نموذج موافقة Google (UMP) للمستخدمين في المنطقة الاقتصادية الأوروبية والمملكة المتحدة وسويسرا.</p>
+    <p>يمكنك رفض الإعلانات المخصّصة، ويستمر التطبيق في العمل.</p>
+    <p>يمكنك إعادة تعيين معرّف الإعلان في أي وقت من: إعدادات أندرويد ← Google ← الإعلانات.</p>
+    <p>لا يخزّن المطوّر اختيارات الموافقة على أي خادم؛ يُخزّنها SDK الخاص بـ Google على جهازك.</p>
+
+    <h2>6. الاحتفاظ بالبيانات وحذفها</h2>
+    <p>تبقى السجلات على جهازك حتى تحذفها من داخل التطبيق أو تلغي تثبيت التطبيق.</p>
+    <p>يمكنك تصدير نسخة احتياطية بصيغة JSON في أي وقت واستعادتها لاحقًا.</p>
+    <p>إلغاء تثبيت التطبيق يزيل جميع بياناته من الجهاز؛ تبقى ملفات PDF و JSON المُصدَّرة حيث حفظتها.</p>
+    <p>لا توجد بيانات على أي خادم لطلب حذفها.</p>
+
+    <h2>7. خصوصية الأطفال</h2>
+    <p>التطبيق غير موجَّه للأطفال تحت 16 عامًا.</p>
+    <p>لا يجمع التطبيق عن قصد أي بيانات من الأطفال.</p>
+    <p>إذا اعتقد ولي الأمر أن طفلًا استخدم التطبيق، يمكنه ببساطة إلغاء تثبيته؛ لا توجد بيانات على أي خادم.</p>
+
+    <h2>8. الأمان</h2>
+    <p>تُخزَّن السجلات محليًّا على الجهاز؛ لا يوجد نقل شبكي للسجلات.</p>
+    <p>لا يستطيع المطوّر الوصول إلى سجلات المستخدم.</p>
+    <p>لا توجد وسيلة تخزين محلي آمنة بنسبة 100%؛ يُنصح بحماية الجهاز واستخدام قفل الشاشة.</p>
+
+    <h2>9. المستخدمون الدوليون</h2>
+    <p>المطوّر مقيم في المغرب. التطبيق نفسه لا ينقل بيانات عبر الحدود؛ قد ينقل AdMob بيانات وفق سياسة Google الخاصة.</p>
+
+    <h2>10. التغييرات على هذه السياسة</h2>
+    <p>قد تُحدَّث السياسة؛ سيعكس تاريخ "آخر تحديث" أي تغييرات.</p>
+    <p>استمرار الاستخدام بعد التغييرات يُعدّ قبولًا لها.</p>
+
+    <h2>11. التواصل</h2>
+    <p><strong>البريد الإلكتروني:</strong> <a href="mailto:achraf_ayaou@outlook.com">achraf_ayaou@outlook.com</a></p>
+    <p><strong>المطوّر:</strong> achraf</p>
+    <p><strong>الموقع:</strong> المغرب</p>
+    <p>لأي استفسار حول الخصوصية، يمكنك التواصل عبر البريد أعلاه.</p>
+  </section>
+
+  <div class="footer">
+    &copy; 2026 WorkMimo. All rights reserved.
+  </div>
 </div>
 
-<section id="ar">
-<h1>سياسة الخصوصية — WorkMimo</h1>
+<script>
+  function setLanguage(lang) {
+    const html = document.documentElement;
+    const body = document.body;
+    const arSection = document.getElementById('ar');
+    const enSection = document.getElementById('en');
+    const btnAr = document.getElementById('btn-ar');
+    const btnEn = document.getElementById('btn-en');
 
-<p><strong>آخر تحديث:</strong> 2026-10-16</p>
-<p><strong>اسم التطبيق:</strong> WorkMimo (المذكرة المهنية)</p>
-<p><strong>اسم الحزمة:</strong> com.achraf.dailymimo</p>
-<p><strong>الإصدار:</strong> 1.0</p>
+    if (lang === 'ar') {
+      html.lang = 'ar';
+      html.dir = 'rtl';
+      body.classList.add('rtl');
+      
+      arSection.style.display = 'block';
+      enSection.style.display = 'none';
+      
+      btnAr.classList.add('active');
+      btnEn.classList.remove('active');
+      
+      document.title = 'سياسة الخصوصية — WorkMimo';
+    } else {
+      html.lang = 'en';
+      html.dir = 'ltr';
+      body.classList.remove('rtl');
+      
+      arSection.style.display = 'none';
+      enSection.style.display = 'block';
+      
+      btnEn.classList.add('active');
+      btnAr.classList.remove('active');
+      
+      document.title = 'Privacy Policy — WorkMimo';
+    }
+  }
 
-<hr>
-
-<h2>1. نظرة عامة</h2>
-<p>WorkMimo هو تطبيق مذكرة مهنية شخصية للحرفيين والمهنيين المستقلين. التطبيق نفسه لا يجمع بيانات شخصية، ولا يتطلب إنشاء حساب، ولا يرسل سجلاتك إلى أي خادم يديره المطوّر. الإعلانات التي تظهر داخل التطبيق تُقدَّم من Google AdMob، وقد تجمع بيانات محدودة كما هو موضح أدناه.</p>
-
-<h2>2. البيانات التي يجمعها التطبيق نفسه</h2>
-<p><strong>لا شيء.</strong> التطبيق لا يحتوي على حسابات، ولا تحليلات، ولا تقارير أعطال، ولا يجمع معرّف الإعلان من تلقاء نفسه. جميع السجلات التي تنشئها تُخزَّن على جهازك فقط.</p>
-
-<h2>3. البيانات المخزَّنة على جهازك</h2>
-<p>يخزّن التطبيق البيانات التالية محليًّا على جهازك:</p>
-<ul>
-<li><code>work_memo_pro_v1</code> — سجلات العمل (التواريخ، الساعات، المدفوعات، الملاحظات، المواقع).</li>
-<li><code>memo_currency</code> — العملة المختارة.</li>
-<li><code>memo_theme</code> — الوضع الداكن أو الفاتح.</li>
-<li><code>memo_high_contrast</code> — الوضع عالي التباين.</li>
-<li><code>memo_lang</code> — لغة الواجهة.</li>
-<li><code>memo_accent</code> — لون الإبراز المختار.</li>
-</ul>
-<p>هذه البيانات لا تغادر جهازك إلا إذا صدّرتها بنفسك.</p>
-
-<h2>4. البيانات التي يشاركها التطبيق مع أطراف ثالثة</h2>
-<p>الطرف الثالث الوحيد هو <strong>Google AdMob</strong> عبر Google Mobile Ads SDK.</p>
-<p>قد يجمع AdMob:</p>
-<ul>
-<li>معرّف الإعلان (Advertising ID)</li>
-<li>عنوان IP</li>
-<li>الموقع التقريبي المستنتج من IP</li>
-<li>طراز الجهاز وإصدار نظام التشغيل</li>
-<li>أحداث التفاعل مع الإعلانات</li>
-</ul>
-<p><strong>الغرض:</strong> عرض الإعلانات وقياس أدائها.</p>
-<p>تخضع هذه البيانات لسياسة خصوصية Google:</p>
-<ul>
-<li><a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></li>
-<li><a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
-</ul>
-<p>لا يُستخدم أي SDK آخر أو خدمة تحليلات.</p>
-
-<h2>5. الموافقة وخياراتك</h2>
-<p>عند أول تشغيل، يعرض التطبيق نموذج موافقة Google (UMP) للمستخدمين في المنطقة الاقتصادية الأوروبية والمملكة المتحدة وسويسرا.</p>
-<p>يمكنك رفض الإعلانات المخصّصة، ويستمر التطبيق في العمل.</p>
-<p>يمكنك إعادة تعيين معرّف الإعلان في أي وقت من: إعدادات أندرويد ← Google ← الإعلانات.</p>
-<p>لا يخزّن المطوّر اختيارات الموافقة على أي خادم؛ يُخزّنها SDK الخاص بـ Google على جهازك.</p>
-
-<h2>6. الاحتفاظ بالبيانات وحذفها</h2>
-<p>تبقى السجلات على جهازك حتى تحذفها من داخل التطبيق أو تلغي تثبيت التطبيق.</p>
-<p>يمكنك تصدير نسخة احتياطية بصيغة JSON في أي وقت واستعادتها لاحقًا.</p>
-<p>إلغاء تثبيت التطبيق يزيل جميع بياناته من الجهاز؛ تبقى ملفات PDF و JSON المُصدَّرة حيث حفظتها.</p>
-<p>لا توجد بيانات على أي خادم لطلب حذفها.</p>
-
-<h2>7. خصوصية الأطفال</h2>
-<p>التطبيق غير موجَّه للأطفال تحت 16 عامًا.</p>
-<p>لا يجمع التطبيق عن قصد أي بيانات من الأطفال.</p>
-<p>إذا اعتقد ولي الأمر أن طفلًا استخدم التطبيق، يمكنه ببساطة إلغاء تثبيته؛ لا توجد بيانات على أي خادم.</p>
-
-<h2>8. الأمان</h2>
-<p>تُخزَّن السجلات محليًّا على الجهاز؛ لا يوجد نقل شبكي للسجلات.</p>
-<p>لا يستطيع المطوّر الوصول إلى سجلات المستخدم.</p>
-<p>لا توجد وسيلة تخزين محلي آمنة بنسبة 100%؛ يُنصح بحماية الجهاز واستخدام قفل الشاشة.</p>
-
-<h2>9. المستخدمون الدوليون</h2>
-<p>المطوّر مقيم في المغرب. التطبيق نفسه لا ينقل بيانات عبر الحدود؛ قد ينقل AdMob بيانات وفق سياسة Google الخاصة.</p>
-
-<h2>10. التغييرات على هذه السياسة</h2>
-<p>قد تُحدَّث السياسة؛ سيعكس تاريخ "آخر تحديث" أي تغييرات.</p>
-<p>استمرار الاستخدام بعد التغييرات يُعدّ قبولًا لها.</p>
-
-<h2>11. التواصل</h2>
-<p><strong>البريد الإلكتروني:</strong> <a href="mailto:achraf_ayaou@outlook.com">achraf_ayaou@outlook.com</a></p>
-<p><strong>المطوّر:</strong> achraf</p>
-<p><strong>الموقع:</strong> المغرب</p>
-<p>لأي استفسار حول الخصوصية، يمكنك التواصل عبر البريد أعلاه.</p>
-</section>
-
-<hr>
-
-<section id="en">
-<h1>Privacy Policy — WorkMimo</h1>
-
-<p><strong>Last updated:</strong> 2026-10-16</p>
-<p><strong>App name:</strong> WorkMimo</p>
-<p><strong>Package name:</strong> com.achraf.dailymimo</p>
-<p><strong>Version:</strong> 1.0</p>
-
-<hr>
-
-<h2>1. Overview</h2>
-<p>WorkMimo is a personal work journal for artisans and freelancers. The app itself does not collect personal data, does not require an account, and does not transmit your records to any server operated by the developer. Ads shown in the app are served by Google AdMob, which may collect limited data as described below.</p>
-
-<h2>2. Data the app itself collects</h2>
-<p><strong>None.</strong> The app has no accounts, no analytics, no crash reporting, and does not collect the Advertising ID on its own. All records you create are stored on your device only.</p>
-
-<h2>3. Data stored on your device</h2>
-<p>The app stores the following data locally on your device:</p>
-<ul>
-<li><code>work_memo_pro_v1</code> — your work records (dates, hours, payments, notes, locations).</li>
-<li><code>memo_currency</code> — your selected currency.</li>
-<li><code>memo_theme</code> — dark or light mode.</li>
-<li><code>memo_high_contrast</code> — high contrast mode.</li>
-<li><code>memo_lang</code> — interface language.</li>
-<li><code>memo_accent</code> — selected accent color.</li>
-</ul>
-<p>This data never leaves your device unless you actively export it.</p>
-
-<h2>4. Data the app shares with third parties</h2>
-<p>The only third party is <strong>Google AdMob</strong> via the Google Mobile Ads SDK.</p>
-<p>AdMob may collect:</p>
-<ul>
-<li>Advertising ID</li>
-<li>IP address</li>
-<li>Approximate location inferred from IP</li>
-<li>Device model and OS version</li>
-<li>Ad interaction events</li>
-</ul>
-<p><strong>Purpose:</strong> to serve and measure ads.</p>
-<p>This data is governed by Google's privacy policy:</p>
-<ul>
-<li><a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></li>
-<li><a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></li>
-</ul>
-<p>No other SDK or analytics service is used.</p>
-
-<h2>5. Consent and your choices</h2>
-<p>On first launch, the app shows Google's consent form (UMP) to users in the EEA, UK, and Switzerland.</p>
-<p>You can decline personalized ads, and the app continues to work.</p>
-<p>You can reset your Advertising ID at any time from: Android Settings → Google → Ads.</p>
-<p>The developer does not store consent choices on any server; the choice is stored on your device by Google's SDK.</p>
-
-<h2>6. Data retention and deletion</h2>
-<p>Records stay on your device until you delete them within the app or uninstall the app.</p>
-<p>You can export a JSON backup at any time and restore it later.</p>
-<p>Uninstalling the app removes all app data from the device; exported PDF and JSON files remain wherever you saved them.</p>
-<p>There is no server-side data to request deletion of.</p>
-
-<h2>7. Children's privacy</h2>
-<p>The app is not directed to children under 16.</p>
-<p>The app does not knowingly collect any data from children.</p>
-<p>If a parent or guardian believes a child has used the app, they can simply uninstall it; no server-side data exists.</p>
-
-<h2>8. Security</h2>
-<p>Records are stored locally on the device; no network transmission of records occurs.</p>
-<p>The developer cannot access user records.</p>
-<p>No method of local storage is 100% secure; users should keep their device protected and use a screen lock.</p>
-
-<h2>9. International users</h2>
-<p>The developer is based in Morocco. The app itself does not transfer data across borders; AdMob may transfer data per Google's own policy.</p>
-
-<h2>10. Changes to this policy</h2>
-<p>The policy may be updated; the "Last updated" date will reflect changes.</p>
-<p>Continued use after changes constitutes acceptance.</p>
-
-<h2>11. Contact</h2>
-<p><strong>Email:</strong> <a href="mailto:achraf_ayaou@outlook.com">achraf_ayaou@outlook.com</a></p>
-<p><strong>Developer:</strong> achraf</p>
-<p><strong>Location:</strong> Morocco</p>
-<p>For any privacy questions, you can reach out via the email above.</p>
-</section>
+  // Ensure English is the default on load
+  document.addEventListener('DOMContentLoaded', () => {
+    setLanguage('en');
+  });
+</script>
 
 </body>
 </html>
