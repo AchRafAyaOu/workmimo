@@ -1,105 +1,354 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>طلب حذف البيانات — WorkMimo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Deletion Request — WorkMimo</title>
+<meta name="description" content="Instructions for deleting data in WorkMimo application">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-  body { font-family: system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; max-width: 720px; margin: 2rem auto; padding: 1.5rem; line-height: 1.7; color: #222; }
-  h1 { color: #144DBA; }
-  h2 { color: #144DBA; margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1.5rem; }
-  a { color: #144DBA; }
-  code { background: #f4f4f4; padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.9em; }
-  .lang-switch { text-align: center; margin-bottom: 2rem; }
-  .lang-switch a { margin: 0 1rem; text-decoration: none; font-weight: bold; }
-  .button { display: inline-block; padding: 0.75rem 1.5rem; background: #144DBA; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 1rem 0; }
+  :root {
+    --primary: #144DBA;
+    --primary-hover: #0f3a8e;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --code-bg: #f1f5f9;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.7;
+    padding: 2rem 1rem;
+    transition: all 0.3s ease;
+  }
+
+  /* RTL Specific Overrides */
+  body.rtl {
+    font-family: 'Cairo', system-ui, -apple-system, sans-serif;
+    direction: rtl;
+    text-align: right;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 2.5rem;
+    border: 1px solid var(--border-color);
+  }
+
+  /* Header & Lang Switch */
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    gap: 1.5rem;
+  }
+
+  .app-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: -0.025em;
+  }
+
+  .lang-switch {
+    display: inline-flex;
+    background-color: var(--code-bg);
+    padding: 4px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+  }
+
+  .lang-btn {
+    padding: 8px 20px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    font-family: inherit;
+  }
+
+  .lang-btn:hover { color: var(--primary); }
+  
+  .lang-btn.active {
+    background-color: var(--card-bg);
+    color: var(--primary);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  /* Typography */
+  h1 {
+    font-size: 1.8rem;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    color: var(--primary);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--bg-color);
+  }
+
+  p { margin-bottom: 1rem; color: var(--text-main); }
+  
+  strong { color: #0f172a; font-weight: 600; }
+
+  /* Lists */
+  ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    color: var(--text-main);
+  }
+  
+  body.rtl ul {
+    padding-left: 0;
+    padding-right: 1.5rem;
+  }
+
+  li { margin-bottom: 0.5rem; }
+
+  /* Code snippets */
+  code {
+    background-color: var(--code-bg);
+    color: #d946ef;
+    padding: 0.2rem 0.4rem;
+    border-radius: 6px;
+    font-family: 'Fira Code', 'Consolas', monospace;
+    font-size: 0.9em;
+    border: 1px solid var(--border-color);
+  }
+
+  /* Links */
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  a:hover {
+    border-bottom-color: var(--primary);
+  }
+
+  /* Meta info box */
+  .meta-info {
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border-color);
+  }
+
+  .meta-info p { margin-bottom: 0.5rem; font-size: 0.95rem; }
+  .meta-info p:last-child { margin-bottom: 0; }
+
+  /* Button CTA */
+  .button-container {
+    margin: 2rem 0;
+    text-align: center;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--primary);
+    color: white !important;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    box-shadow: 0 4px 6px -1px rgba(20, 77, 186, 0.2);
+    transition: transform 0.2s, background-color 0.2s;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    border-bottom: none;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .container { padding: 1.5rem; }
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.15rem; }
+  }
 </style>
 </head>
 <body>
 
-<div class="lang-switch">
-  <a href="#ar">العربية</a> | <a href="#en">English</a>
+<div class="container">
+  <div class="header">
+    <div class="app-title">WorkMimo</div>
+    <div class="lang-switch">
+      <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">English</button>
+      <button class="lang-btn" id="btn-ar" onclick="setLanguage('ar')">العربية</button>
+    </div>
+  </div>
+
+  <!-- ENGLISH SECTION (Default) -->
+  <section id="en">
+    <h1>Data Deletion Request — WorkMimo</h1>
+
+    <div class="meta-info">
+      <p><strong>App:</strong> WorkMimo</p>
+      <p><strong>Package name:</strong> com.achraf.dailymimo</p>
+      <p><strong>Developer:</strong> achraf</p>
+    </div>
+
+    <h2>How to delete your data</h2>
+    <p>WorkMimo stores all records <strong>locally on your device only</strong>. We do not keep any data on our servers. You can delete all your data yourself, immediately, without contacting us:</p>
+
+    <ul>
+      <li><strong>Delete one record:</strong> open the app → tap the record → delete button.</li>
+      <li><strong>Delete all records at once:</strong> open the app → Settings → "Delete all records".</li>
+      <li><strong>Delete all app data:</strong> Android Settings → Apps → WorkMimo → Storage → Clear data.</li>
+      <li><strong>Delete everything permanently:</strong> uninstall the app.</li>
+    </ul>
+
+    <h2>Advertising data (Google AdMob)</h2>
+    <p>The app shows ads from Google AdMob. AdMob may collect the Advertising ID to serve relevant ads. To reset or delete your Advertising ID:</p>
+
+    <ul>
+      <li>Open <strong>Android Settings</strong> → <strong>Google</strong> → <strong>Ads</strong>.</li>
+      <li>Tap <strong>"Reset advertising ID"</strong> or <strong>"Delete advertising ID"</strong>.</li>
+    </ul>
+
+    <p>For more information about Google's practices: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">https://policies.google.com/technologies/ads</a></p>
+
+    <h2>Need help?</h2>
+    <p>If you cannot delete your data yourself, or you have a privacy question, contact us:</p>
+
+    <div class="button-container">
+      <a class="btn-primary" href="mailto:achraf_ayaou@outlook.com?subject=WorkMimo%20-%20Data%20Deletion%20Request">Send a data deletion request</a>
+    </div>
+
+    <p style="text-align: center; color: var(--text-muted);"><strong>Email:</strong> <a href="mailto:achraf_ayaou@outlook.com">achraf_ayaou@outlook.com</a></p>
+    <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem;">We will respond within 7 business days.</p>
+  </section>
+
+  <!-- ARABIC SECTION (Hidden by default) -->
+  <section id="ar" style="display: none;">
+    <h1>طلب حذف البيانات — WorkMimo</h1>
+
+    <div class="meta-info">
+      <p><strong>التطبيق:</strong> WorkMimo</p>
+      <p><strong>اسم الحزمة:</strong> com.achraf.dailymimo</p>
+      <p><strong>المطوّر:</strong> achraf</p>
+    </div>
+
+    <h2>كيف تُحذف بياناتك</h2>
+    <p>يخزّن WorkMimo جميع السجلات <strong>محليًّا على جهازك فقط</strong>. لا نحتفظ بأي بيانات على خوادمنا. لذلك يمكنك حذف كل بياناتك بنفسك، فورًا، دون الحاجة للتواصل معنا:</p>
+
+    <ul>
+      <li><strong>لحذف سجل واحد:</strong> افتح التطبيق → اضغط على السجل → زر الحذف.</li>
+      <li><strong>لحذف كل السجلات دفعة واحدة:</strong> افتح التطبيق → الإعدادات → "حذف جميع السجلات".</li>
+      <li><strong>لحذف كل بيانات التطبيق:</strong> من إعدادات أندرويد → التطبيقات → WorkMimo → التخزين → مسح البيانات.</li>
+      <li><strong>لحذف كل شيء نهائيًّا:</strong> ألغِ تثبيت التطبيق.</li>
+    </ul>
+
+    <h2>بيانات الإعلانات (Google AdMob)</h2>
+    <p>التطبيق يعرض إعلانات من Google AdMob. AdMob قد يجمع معرّف الإعلان (Advertising ID) لعرض إعلانات مناسبة. لإعادة تعيين معرّف الإعلان أو حذفه:</p>
+
+    <ul>
+      <li>افتح <strong>إعدادات أندرويد</strong> → <strong>Google</strong> → <strong>الإعلانات</strong>.</li>
+      <li>اضغط <strong>"إعادة تعيين معرّف الإعلان"</strong> أو <strong>"حذف معرّف الإعلان"</strong>.</li>
+    </ul>
+
+    <p>لمزيد من المعلومات حول ممارسات Google: <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">https://policies.google.com/technologies/ads</a></p>
+
+    <h2>هل تحتاج مساعدة؟</h2>
+    <p>إن لم تتمكّن من حذف بياناتك بنفسك، أو كان لديك استفسار حول الخصوصية، تواصل معنا:</p>
+
+    <div class="button-container">
+      <a class="btn-primary" href="mailto:achraf_ayaou@outlook.com?subject=WorkMimo%20-%20Data%20Deletion%20Request">أرسل طلب حذف البيانات</a>
+    </div>
+
+    <p style="text-align: center; color: var(--text-muted);"><strong>البريد الإلكتروني:</strong> <a href="mailto:achraf_ayaou@outlook.com">achraf_ayaou@outlook.com</a></p>
+    <p style="text-align: center; color: var(--text-muted); font-size: 0.9rem;">سنرد خلال 7 أيام عمل.</p>
+  </section>
+
+  <div class="footer">
+    &copy; 2026 WorkMimo. All rights reserved.
+  </div>
 </div>
 
-<section id="ar">
-<h1>طلب حذف البيانات — WorkMimo</h1>
+<script>
+  function setLanguage(lang) {
+    const html = document.documentElement;
+    const body = document.body;
+    const arSection = document.getElementById('ar');
+    const enSection = document.getElementById('en');
+    const btnAr = document.getElementById('btn-ar');
+    const btnEn = document.getElementById('btn-en');
 
-<p><strong>التطبيق:</strong> WorkMimo<br>
-<strong>اسم الحزمة:</strong> com.achraf.dailymimo<br>
-<strong>المطوّر:</strong> achraf</p>
+    if (lang === 'ar') {
+      html.lang = 'ar';
+      html.dir = 'rtl';
+      body.classList.add('rtl');
+      
+      arSection.style.display = 'block';
+      enSection.style.display = 'none';
+      
+      btnAr.classList.add('active');
+      btnEn.classList.remove('active');
+      
+      document.title = 'طلب حذف البيانات — WorkMimo';
+    } else {
+      html.lang = 'en';
+      html.dir = 'ltr';
+      body.classList.remove('rtl');
+      
+      arSection.style.display = 'none';
+      enSection.style.display = 'block';
+      
+      btnEn.classList.add('active');
+      btnAr.classList.remove('active');
+      
+      document.title = 'Data Deletion Request — WorkMimo';
+    }
+  }
 
-<h2>كيف تُحذف بياناتك</h2>
-
-<p>يخزّن WorkMimo جميع السجلات <strong>محليًّا على جهازك فقط</strong>. لا نحتفظ بأي بيانات على خوادمنا. لذلك يمكنك حذف كل بياناتك بنفسك، فورًا، دون الحاجة للتواصل معنا:</p>
-
-<ul>
-  <li><strong>لحذف سجل واحد:</strong> افتح التطبيق → اضغط على السجل → زر الحذف.</li>
-  <li><strong>لحذف كل السجلات دفعة واحدة:</strong> افتح التطبيق → الإعدادات → "حذف جميع السجلات".</li>
-  <li><strong>لحذف كل بيانات التطبيق:</strong> من إعدادات أندرويد → التطبيقات → WorkMimo → التخزين → مسح البيانات.</li>
-  <li><strong>لحذف كل شيء نهائيًّا:</strong> ألغِ تثبيت التطبيق.</li>
-</ul>
-
-<h2>بيانات الإعلانات (Google AdMob)</h2>
-
-<p>التطبيق يعرض إعلانات من Google AdMob. AdMob قد يجمع معرّف الإعلان (Advertising ID) لعرض إعلانات مناسبة. لإعادة تعيين معرّف الإعلان أو حذفه:</p>
-
-<ul>
-  <li>افتح <strong>إعدادات أندرويد</strong> → <strong>Google</strong> → <strong>الإعلانات</strong>.</li>
-  <li>اضغط <strong>"إعادة تعيين معرّف الإعلان"</strong> أو <strong>"حذف معرّف الإعلان"</strong>.</li>
-</ul>
-
-<p>لمزيد من المعلومات حول ممارسات Google: <a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></p>
-
-<h2>هل تحتاج مساعدة؟</h2>
-
-<p>إن لم تتمكّن من حذف بياناتك بنفسك، أو كان لديك استفسار حول الخصوصية، تواصل معنا:</p>
-
-<a class="button" href="mailto:achraf_ayaou@outlook.com?subject=WorkMimo%20-%20Data%20Deletion%20Request">أرسل طلب حذف البيانات</a>
-
-<p><strong>البريد الإلكتروني:</strong> <a href="mailto:achraf_ayaou@outlook.com">achraf_ayaou@outlook.com</a></p>
-
-<p>سنرد خلال 7 أيام عمل.</p>
-</section>
-
-<section id="en">
-<h1>Data Deletion Request — WorkMimo</h1>
-
-<p><strong>App:</strong> WorkMimo<br>
-<strong>Package name:</strong> com.achraf.dailymimo<br>
-<strong>Developer:</strong> achraf</p>
-
-<h2>How to delete your data</h2>
-
-<p>WorkMimo stores all records <strong>locally on your device only</strong>. We do not keep any data on our servers. You can delete all your data yourself, immediately, without contacting us:</p>
-
-<ul>
-  <li><strong>Delete one record:</strong> open the app → tap the record → delete button.</li>
-  <li><strong>Delete all records at once:</strong> open the app → Settings → "Delete all records".</li>
-  <li><strong>Delete all app data:</strong> Android Settings → Apps → WorkMimo → Storage → Clear data.</li>
-  <li><strong>Delete everything permanently:</strong> uninstall the app.</li>
-</ul>
-
-<h2>Advertising data (Google AdMob)</h2>
-
-<p>The app shows ads from Google AdMob. AdMob may collect the Advertising ID to serve relevant ads. To reset or delete your Advertising ID:</p>
-
-<ul>
-  <li>Open <strong>Android Settings</strong> → <strong>Google</strong> → <strong>Ads</strong>.</li>
-  <li>Tap <strong>"Reset advertising ID"</strong> or <strong>"Delete advertising ID"</strong>.</li>
-</ul>
-
-<p>For more information about Google's practices: <a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a></p>
-
-<h2>Need help?</h2>
-
-<p>If you cannot delete your data yourself, or you have a privacy question, contact us:</p>
-
-<a class="button" href="mailto:achraf_ayaou@outlook.com?subject=WorkMimo%20-%20Data%20Deletion%20Request">Send a data deletion request</a>
-
-<p><strong>Email:</strong> <a href="mailto:achraf_ayaou@outlook.com">achraf_ayaou@outlook.com</a></p>
-
-<p>We will respond within 7 business days.</p>
-</section>
+  // Ensure English is the default on load
+  document.addEventListener('DOMContentLoaded', () => {
+    setLanguage('en');
+  });
+</script>
 
 </body>
 </html>
